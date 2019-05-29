@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      Hi
-    </div>
-  );
+class App extends Component {
+  state = { resource: 'posts' }
+  
+  render() {
+    return (
+      <div className="App">
+        <div>
+          <button onClick={() => this.setState({ resource: 'posts' })} >Posts</button>
+          <button onClick={() => this.setState({ resource: 'todos' })}>Todos</button>
+        </div>
+        {this.state.resource}
+      </div>
+    );
+  }
 }
 
 export default App;
