@@ -7,7 +7,14 @@ class ResouceList extends Component {
   async componentDidMount() {
     const response = await axios.get(`https://jsonplaceholder.typicode.com/${this.props.resource}`)
     this.setState({ resources: response.data });
-    console.log(response);
+  }
+
+  async componentDidUpdate(prevProps) {
+    if (prevProps.resource !== this.props.resource) {
+      const response = await axios.get(`https://jsonplaceholder.typicode.com/${this.props.resource}`)
+
+      this.setState({ resources: response.data });
+    }
   }
 
   render() {
@@ -15,4 +22,4 @@ class ResouceList extends Component {
   }
 }
 
-export default ResouceList
+export default ResouceList;
